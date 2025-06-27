@@ -1,16 +1,22 @@
-import {
-  Box,
-  Typography,
-  TextField,
-  Select,
-  MenuItem,
-  Button,
-  CssBaseline,
-} from "@mui/material";
+import { Box, Typography, Button, CssBaseline } from "@mui/material";
+import { useFormInput } from "../../hooks/useFormInput";
+import TextInput from "../../components/textInput/TextInput";
+import DateInput from "../../components/dateInput/DateInput";
+import SelectInput from "../../components/selectInput/SelectInput";
 
 function Create() {
+  const userNameProps = useFormInput("");
+  const dobProps = useFormInput("");
+  const genderProps = useFormInput("");
+  const emailProps = useFormInput("");
+  const addressProps = useFormInput("");
+  const telephoneProps = useFormInput("");
+  const websiteProps = useFormInput("");
+
+  // justifyContent={"center"}
+
   return (
-    <Box display="flex" justifyContent={"center"}>
+    <Box display="flex">
       <CssBaseline />
       <Box
         display="flex"
@@ -25,43 +31,61 @@ function Create() {
       >
         <Box display="flex" flexDirection="column">
           <Typography>Benutzername:</Typography>
-          <TextField size="small" fullWidth type="text" variant="outlined" />
+          <TextInput
+            value={userNameProps.value}
+            onChange={userNameProps.handleInputChangeEvent}
+          />
         </Box>
 
         <Box display="flex" flexDirection="column">
           <Typography>Geburtsdatum:</Typography>
-          <TextField size="small" fullWidth type="date" variant="outlined" />
+          <DateInput
+            value={dobProps.value}
+            onChange={dobProps.handleInputChangeEvent}
+          />
         </Box>
 
         <Box display="flex" flexDirection="column">
           <Typography>Geschlecht:</Typography>
-          <Select size="small" defaultValue="" fullWidth>
-            <MenuItem value="männlich">Männlich</MenuItem>
-            <MenuItem value="weiblich">Weiblich</MenuItem>
-          </Select>
+          <SelectInput
+            value={genderProps.value}
+            onChange={genderProps.handleInputChangeEvent}
+          />
         </Box>
 
         <Box display="flex" flexDirection="column">
           <Typography>Email Adresse:</Typography>
-          <TextField size="small" fullWidth type="email" variant="outlined" />
+          <TextInput
+            value={emailProps.value}
+            onChange={emailProps.handleInputChangeEvent}
+          />
         </Box>
 
         <Box display="flex" flexDirection="column">
           <Typography>Post Adresse:</Typography>
-          <TextField size="small" fullWidth type="text" variant="outlined" />
+          <TextInput
+            value={addressProps.value}
+            onChange={addressProps.handleInputChangeEvent}
+          />
         </Box>
 
         <Box display="flex" flexDirection="column">
           <Typography>Telefonnummer:</Typography>
-          <TextField size="small" fullWidth type="tel" variant="outlined" />
+          <TextInput
+            value={telephoneProps.value}
+            onChange={telephoneProps.handleInputChangeEvent}
+          />
         </Box>
 
         <Box display="flex" flexDirection="column">
           <Typography>Webseite:</Typography>
-          <TextField size="small" fullWidth type="text" variant="outlined" />
+          <TextInput
+            value={websiteProps.value}
+            onChange={websiteProps.handleInputChangeEvent}
+          />
         </Box>
 
-        <Button variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary">
           Absenden
         </Button>
       </Box>

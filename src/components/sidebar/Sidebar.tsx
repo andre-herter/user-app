@@ -2,9 +2,9 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import Button from "../button/Button";
 import { Outlet } from "react-router-dom";
+import { Divider, ListItem } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -25,12 +25,17 @@ function Sidebar() {
         variant="permanent"
         anchor="left"
       >
-        <Divider />
         <List>
+          <ListItem
+            sx={{ justifyContent: "center", backgroundColor: "#1f2437" }}
+          >
+            <img src="/logo.png" alt="Logo" width={200} />
+          </ListItem>
+
+          <Divider />
           <Button to="/overview" text={"Übersicht"} />
           <Button to="/create" text={"Erstellen"} />
         </List>
-        <Divider />
       </Drawer>
       <Box
         component="main"
