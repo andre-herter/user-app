@@ -20,6 +20,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import type { User } from "../../types/User";
 
 function InfoItem({ icon, text }: any) {
   return (
@@ -30,7 +31,11 @@ function InfoItem({ icon, text }: any) {
   );
 }
 
-function UserCard() {
+type UserCardProps = {
+  user: User;
+};
+
+function UserCard({ user }: UserCardProps) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -75,7 +80,7 @@ function UserCard() {
         </Box>
 
         <Typography variant="h5" gutterBottom>
-          Max Mustermann
+          {user.name}
         </Typography>
 
         <Box
@@ -85,15 +90,15 @@ function UserCard() {
           flexWrap="wrap"
         >
           <Box display="flex" flexDirection="column" gap={1} flex={1}>
-            <InfoItem icon={faCakeCandles} text="13.02.1855" />
-            <InfoItem icon={faAddressCard} text="Musterstraße 12" />
-            <InfoItem icon={faVenusMars} text="Männlich" />
+            <InfoItem icon={faCakeCandles} text={user.dob} />
+            <InfoItem icon={faAddressCard} text={user.address} />
+            <InfoItem icon={faVenusMars} text={user.gender} />
           </Box>
 
           <Box display="flex" flexDirection="column" gap={1} flex={1}>
-            <InfoItem icon={faPhone} text="017641452" />
-            <InfoItem icon={faEnvelope} text="test@test.de" />
-            <InfoItem icon={faGlobe} text="www.andre.de" />
+            <InfoItem icon={faPhone} text={user.phone} />
+            <InfoItem icon={faEnvelope} text={user.email} />
+            <InfoItem icon={faGlobe} text={user.web} />
           </Box>
         </Box>
       </CardContent>
