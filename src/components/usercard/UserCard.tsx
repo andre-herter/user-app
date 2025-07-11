@@ -7,7 +7,7 @@ import {
   faPhone,
   faVenusMars,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
@@ -21,6 +21,9 @@ import {
   useTheme,
 } from "@mui/material";
 import type { User } from "../../types/User";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+import { Link } from "react-router-dom";
 
 function InfoItem({ icon, text }: any) {
   return (
@@ -38,6 +41,12 @@ type UserCardProps = {
 function UserCard({ user }: UserCardProps) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const { usersDispatch } = useContext(UserContext);
+
+  function deleteUser() {
+    usersDispatch({ type: "REMOVE_USER", user: user });
+    alert("Deleted user");
+  }
 
   return (
     <Card
@@ -71,10 +80,10 @@ function UserCard({ user }: UserCardProps) {
         }}
       >
         <Box display="flex" justifyContent="flex-end">
-          <IconButton component={Link} to="/edit/1" color="default">
+          <IconButton component={Link} to={`/edit/${user.id}`} color="default">
             <EditIcon />
           </IconButton>
-          <IconButton color="error">
+          <IconButton onClick={deleteUser} color="error">
             <DeleteIcon />
           </IconButton>
         </Box>
@@ -90,7 +99,14 @@ function UserCard({ user }: UserCardProps) {
           flexWrap="wrap"
         >
           <Box display="flex" flexDirection="column" gap={1} flex={1}>
-            <InfoItem icon={faCakeCandles} text={user.dob} />
+            <InfoItem
+              icon={faCakeCandles}
+              text={new Date(user.dob).toLocaleDateString("de-DE", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+              })}
+            />
             <InfoItem icon={faAddressCard} text={user.address} />
             <InfoItem icon={faVenusMars} text={user.gender} />
           </Box>

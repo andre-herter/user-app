@@ -25,14 +25,12 @@ export function useFormInput(value: string, required = false) {
   function validateInput(inputValue: string): boolean {
     if (required) {
       if (inputValue === "") {
-        //setze ein Fehler
         setError({
           isError: true,
           errorMessage: "Bitte geben Sie einen Wert ein",
         });
         return false;
       } else {
-        //reset Fehler
         setError({ isError: false, errorMessage: "" });
         return true;
       }
