@@ -10,12 +10,12 @@ import type { User } from "./types/User";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/user-app",
     element: <Root />,
     children: [
-      { path: "/overview", element: <Overview /> },
-      { path: "/create", element: <Create /> },
-      { path: "/edit/:id", element: <Edit /> },
+      { path: "overview", element: <Overview /> },
+      { path: "create", element: <Create /> },
+      { path: "edit/:id", element: <Edit /> },
     ],
   },
 ]);
