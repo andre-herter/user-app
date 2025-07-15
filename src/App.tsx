@@ -8,17 +8,22 @@ import userManagementReducer from "./hooks/userManagementReducer";
 import { UserContext } from "./context/UserContext";
 import type { User } from "./types/User";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Root />,
+      children: [
+        { path: "overview", element: <Overview /> },
+        { path: "create", element: <Create /> },
+        { path: "edit/:id", element: <Edit /> },
+      ],
+    },
+  ],
   {
-    path: "/user-app",
-    element: <Root />,
-    children: [
-      { path: "overview", element: <Overview /> },
-      { path: "create", element: <Create /> },
-      { path: "edit/:id", element: <Edit /> },
-    ],
-  },
-]);
+    basename: "/user-app",
+  }
+);
 
 function App() {
   const [users, usersDispatch] = useReducer(
