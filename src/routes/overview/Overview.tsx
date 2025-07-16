@@ -7,6 +7,10 @@ function Overview() {
   const { users } = useContext(UserContext);
   console.log(users);
 
+  if (!users || users.length === 0) {
+    return <div>Bitte erstellen Sie einen Benutzer !</div>;
+  }
+
   return (
     <div className="overview-body">
       {users.map((user) => (

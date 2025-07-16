@@ -5,7 +5,7 @@ import List from "@mui/material/List";
 import Button from "../button/Button";
 import { Outlet } from "react-router-dom";
 import { Divider, ListItem } from "@mui/material";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo-andre.png";
 
 const drawerWidth = 240;
 
@@ -27,10 +27,8 @@ function Sidebar() {
         anchor="left"
       >
         <List>
-          <ListItem
-            sx={{ justifyContent: "center", backgroundColor: "#1f2437" }}
-          >
-            <img src={logo} alt="Logo" width={200} />
+          <ListItem sx={{ justifyContent: "center" }}>
+            <img src={logo} alt="Logo" width={250} />
           </ListItem>
 
           <Divider />
