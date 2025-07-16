@@ -5,7 +5,7 @@ import List from "@mui/material/List";
 import Button from "../button/Button";
 import { Outlet } from "react-router-dom";
 import { Divider, ListItem } from "@mui/material";
-import logo from "../../../public/logo.png";
+import logo from "../../assets/logo.png";
 
 const drawerWidth = 240;
 

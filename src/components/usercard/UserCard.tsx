@@ -24,6 +24,7 @@ import type { User } from "../../types/User";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
+import userLogo from "../../assets/user.png";
 
 function InfoItem({ icon, text }: any) {
   return (
@@ -66,7 +67,7 @@ function UserCard({ user }: UserCardProps) {
           height: isSmallScreen ? 200 : "100%",
           objectFit: "cover",
         }}
-        image="https://randomuser.me/api/portraits/men/75.jpg"
+        image={userLogo}
         alt="Profilbild"
       />
 

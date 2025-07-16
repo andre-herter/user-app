@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import Overview from "./routes/overview/Overview";
 import Create from "./routes/create/Create";
 import Edit from "./routes/edit/Edit";
@@ -14,6 +18,7 @@ const router = createBrowserRouter(
       path: "/",
       element: <Root />,
       children: [
+        { index: true, element: <Navigate to="overview" replace /> },
         { path: "overview", element: <Overview /> },
         { path: "create", element: <Create /> },
         { path: "edit/:id", element: <Edit /> },
@@ -21,7 +26,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/user-app",
+    basename: "/user-app/",
   }
 );
 
