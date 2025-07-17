@@ -15,10 +15,10 @@ function UserForm({ user, onSubmit }: UserFormProps) {
   const userNameProps = useFormInput(user?.name ?? "", true);
   const dobProps = useFormInput(user?.dob ?? "", true);
   const genderProps = useFormInput(user?.gender ?? "", true);
-  const emailProps = useFormInput(user?.email ?? "", true);
+  const emailProps = useFormInput(user?.email ?? "", true, "email");
   const addressProps = useFormInput(user?.address ?? "", true);
-  const telephoneProps = useFormInput(user?.phone ?? "", true);
-  const websiteProps = useFormInput(user?.web ?? "", true);
+  const telephoneProps = useFormInput(user?.phone ?? "", true, "tel");
+  const websiteProps = useFormInput(user?.web ?? "", true, "url");
 
   function convertToGender(value: string): Gender {
     if (value === "männlich" || value === "weiblich") {
@@ -47,6 +47,7 @@ function UserForm({ user, onSubmit }: UserFormProps) {
       isGenderValid
     );
   }
+
   function handleSubmitUser() {
     if (isValidInput()) {
       const submittedUser: User = {
