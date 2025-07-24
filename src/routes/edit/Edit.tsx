@@ -20,7 +20,7 @@ function Edit() {
 
   function updatedUser(user: User) {
     usersDispatch({ type: "UPDATE_USER", user: user });
-    alert("Updated user");
+    alert("Benutzer aktualisiert");
     navigate(-1);
   }
 

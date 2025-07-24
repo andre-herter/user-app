@@ -61,8 +61,6 @@ function UserForm({ user, onSubmit }: UserFormProps) {
         web: websiteProps.value,
       };
       onSubmit(submittedUser);
-    } else {
-      alert("Bitte Informationen ergänzen");
     }
   }
   return (

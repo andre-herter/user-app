@@ -46,7 +46,7 @@ function UserCard({ user }: UserCardProps) {
 
   function deleteUser() {
     usersDispatch({ type: "REMOVE_USER", user: user });
-    alert("Deleted user");
+    alert("Benutzer wurde gelöscht");
   }
 
   return (
